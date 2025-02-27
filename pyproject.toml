@@ -4,7 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["alexander <alex.matveev.dev@gmail.com>"]
 readme = "README.md"
-package-mode = false
+packages = [
+    { include = "fastapi-application" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
