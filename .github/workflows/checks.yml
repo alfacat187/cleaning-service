@@ -1,0 +1,28 @@
+name: Code checks
+
+on:
+  push:
+    branches: [ master ] # можно указать и другие ветки через запятую
+  pull_request:
+    branches: [ master ]
+
+jobs:  # задания которые сработают при push/pull_request
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # скачиваем наш код
+      - name: Install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry install --with dev
+      - name: Run flake
+        run: flake8 .  # запуск flake в текущей директории
+      - name: Run mypy
+        run: mypy .
+      - name: Run tests
+        run: pytest -v
