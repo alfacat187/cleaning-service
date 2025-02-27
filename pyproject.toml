@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cleaning-service-alfacat"
+name = "cleaning-service"
 version = "0.1.0"
 description = ""
 authors = ["alexander <alex.matveev.dev@gmail.com>"]
